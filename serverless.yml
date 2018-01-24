@@ -1,0 +1,40 @@
+service: opsgenie-slack-unfurling
+
+custom:
+
+  # Log all events to CloudWatch
+  slack_enable_logging: true
+
+  # The api key you get from OpsGenie API Integration (enable restrict access to configuration when possible)
+    opsgenie_api_key: "PasteYourOpsGenieAPIKey"
+
+    # Slack token you received when you install the internal integration
+    slack_access_token: "PasteYourAccessTokenAfterYouInstallYourAppAndDeployAgain"
+
+    # Verification token
+    slack_verification_token: "PasteYourSlackVerificationToken"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+#  region: us-west-2
+#  profile: dev
+  memorySize: 512
+  timeout: 4
+  environment:
+    OPSGENIE_API_KEY: ${self:custom.opsgenie_api_key}
+    SLACK_VERIFICATION_TOKEN: ${self:custom.slack_verification_token}
+    SLACK_ACCESS_TOKEN: ${self:custom.slack_access_token}
+
+functions:
+  OpsGenieAlertUnfluring:
+    name: opsgenie-slack-alert-unfurling
+    description: Unfurl your alerts from OpsGenie
+    handler: handler.unfurl
+    events:
+      - http:
+                path: slack-opsgenie-alert-unfluring
+                method: post
+                integration: lambda
+                response:
+                  template: $input.path('$')

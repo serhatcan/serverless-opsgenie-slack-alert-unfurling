@@ -1,0 +1,30 @@
+{
+  "name": "serverless-opsgenie-slack-alert-unfurling",
+  "version": "1.0.0",
+  "description": "An example code demonstrating OpsGenie Alert Unfurling using AWS Lambda",
+  "keywords": [
+    "slack",
+    "unflurling",
+    "opsgenie",
+    "serverless"
+  ],
+  "author": {
+    "name": "Serhat Can",
+    "email": "can.srht@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "opsgenie-sdk": "^0.4.2",
+    "@slack/client": "^3.15.0",
+    "lodash.keyby": "^4.6.0",
+    "lodash.mapvalues": "^4.6.0",
+    "lodash.omit": "^4.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serhatcan/serverless-opsgenie-slack-alert-unfurling.git"
+  },
+  "bugs": {
+    "url": "https://github.com/serhatcan/serverless-opsgenie-slack-alert-unfurling/issues"
+  }
+}
