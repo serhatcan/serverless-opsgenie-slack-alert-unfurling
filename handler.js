@@ -90,12 +90,7 @@ module.exports.unfurl = (event, context, callback) => {
         return callback("[401] Unauthorized");
     }
 
-    // challenge sent by Slack when you first configure Events API
-    if (payload.type === "url_verification") {
-        return callback(null, payload.challenge);
-    }
-    // now lets see some action as we have our real event_callback
-    else if (payload.type === "event_callback") {
+    if (payload.type === "event_callback") {
         const slack = new WebClient(accessToken);
         const event = payload.event;
 
@@ -105,10 +100,14 @@ module.exports.unfurl = (event, context, callback) => {
             .then(unfurls => slack.chat.unfurl(event.message_ts, event.channel, unfurls))
             .catch(console.error);
 
-        callback();
-
+        return callback();
+    }
+    // challenge sent by Slack when you first configure Events API
+    else if (payload.type === "url_verification") {
+        return callback(null, payload.challenge);
     } else {
         console.error("An unknown event type received.", event);
+        return callback("Unkown event type received.");
     }
 
 };
