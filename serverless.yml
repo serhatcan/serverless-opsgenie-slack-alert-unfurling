@@ -6,13 +6,13 @@ custom:
   slack_enable_logging: true
 
   # The api key you get from OpsGenie API Integration (enable restrict access to configuration when possible)
-    opsgenie_api_key: "PasteYourOpsGenieAPIKey"
+  opsgenie_api_key: "PasteYourOpsGenieAPIKey"
 
     # Slack token you received when you install the internal integration
-    slack_access_token: "PasteYourAccessTokenAfterYouInstallYourAppAndDeployAgain"
+  slack_access_token: "PasteYourAccessTokenAfterYouInstallYourAppAndDeployAgain"
 
     # Verification token
-    slack_verification_token: "PasteYourSlackVerificationToken"
+  slack_verification_token: "PasteYourSlackVerificationToken"
 
 provider:
   name: aws
